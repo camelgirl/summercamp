@@ -8,10 +8,23 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- Hidden form for Netlify to detect during build -->
+    <!-- Hidden forms for Netlify to detect during build -->
     <form name="subscribe" netlify netlify-honeypot="bot-field" hidden>
       <input type="email" name="email" />
       <input type="hidden" name="form-name" value="subscribe" />
+    </form>
+    <form name="add-camp" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="url" name="website" />
+      <input type="text" name="ages" />
+      <input type="text" name="dates" />
+      <input type="text" name="registrationDate" />
+      <input type="text" name="cost" />
+      <input type="text" name="location" />
+      <input type="text" name="type" />
+      <input type="text" name="district" />
+      <textarea name="notes"></textarea>
+      <input type="hidden" name="form-name" value="add-camp" />
     </form>
     <script type="module" src="/src/main.jsx"></script>
   </body>

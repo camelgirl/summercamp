@@ -36,6 +36,34 @@ body {
     padding: 0 20px;
 }
 
+.add-camp-section {
+    margin: 2rem 0 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-camp-button {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+}
+
+.add-camp-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px -1px rgba(37, 99, 235, 0.4);
+}
+
+.add-camp-button:active {
+    transform: translateY(0);
+}
+
 header {
     background: linear-gradient(135deg, #1e40af 0%, var(--primary-color) 50%, var(--secondary-color) 100%);
     color: white;

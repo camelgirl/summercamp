@@ -4,6 +4,7 @@ import Subscribe from '../components/Subscribe';
 import SearchSection from '../components/SearchSection';
 import CampCard from '../components/CampCard';
 import MapView from '../components/MapView';
+import AddCampForm from '../components/AddCampForm';
 import { useCamps, useFilteredCamps } from '../hooks/useCamps';
 import { getCampCoordinates } from '../utils/geocoding';
 import '../styles.css';
@@ -13,6 +14,7 @@ function CommunityCamps() {
   const [ageFilter, setAgeFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [currentView, setCurrentView] = useState('list');
+  const [isAddCampOpen, setIsAddCampOpen] = useState(false);
 
   const { camps, loading, error } = useCamps('/api/camps');
   const filteredCamps = useFilteredCamps(camps, {
@@ -64,6 +66,15 @@ function CommunityCamps() {
       <Header title="🏕️ Austin Summer Camps 2026" subtitle="Find the perfect summer camp for your child" />
       <Subscribe />
       <main className="container">
+        <div className="add-camp-section">
+          <button 
+            className="add-camp-button" 
+            onClick={() => setIsAddCampOpen(true)}
+            aria-label="Add a camp"
+          >
+            ➕ Add a Camp
+          </button>
+        </div>
         <SearchSection
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
@@ -95,6 +106,7 @@ function CommunityCamps() {
           </>
         )}
       </main>
+      <AddCampForm isOpen={isAddCampOpen} onClose={() => setIsAddCampOpen(false)} />
       <footer>
         <div className="container">
           <p>Email: <a href="mailto:camelgirl.summercamp@gmail.com">camelgirl.summercamp@gmail.com</a></p>
