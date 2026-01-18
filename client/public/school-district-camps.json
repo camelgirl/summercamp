@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Austin ISD - Camp Heatwave (Third Base)",
+    "website": "https://www.austinisd.org/summer-school/camp-heatwave",
+    "notes": "Day camp 7am-6pm with themes, field trips, enrichment activities, and swim days on most weeks. All elementary students welcome.",
+    "ages": "Elementary (K-5)",
+    "dates": "May 28 - August 8, 2026. Weekly sessions and some 3-day weeks available.",
+    "registrationDate": "Check website for registration dates",
+    "cost": "$200/week; 3-day weeks $120",
+    "location": "Clayton ES, Galindo ES, Hill ES",
+    "type": "Day Camp",
+    "district": "Austin ISD"
+  },
+  {
+    "name": "Austin ISD - Multilingual Summer School (Pre-K4 & Kindergarten)",
+    "website": "https://www.austinisd.org/multilingual/programs/summer-programs",
+    "notes": "Language development enrichment camp for emergent bilingual students. Prepares students for kindergarten and first grade. Bus transportation available for eligible students.",
+    "ages": "Pre-K4 - Kindergarten (Emergent Bilingual students)",
+    "dates": "June 2 - June 26, 2026. Monday - Thursday, 7:30am - 3:30pm",
+    "registrationDate": "March 3 - March 28, 2026. Electronic or paper forms available from homeroom teachers.",
+    "cost": "Free for eligible students",
+    "location": "North: TA Brown Elementary (7801 Guadalupe St, 78752), Govalle Elementary (3601 Govalle Ave, 78702). South: Kocurek Elementary (9800 Curlew Dr, 78748), Uphaus Early Childhood Center (5200 Freidrich Ln, 78744)",
+    "type": "Day Camp",
+    "district": "Austin ISD"
+  },
+  {
+    "name": "Austin ISD - Future Ready Summer Camp (Middle School)",
+    "website": "https://www.austinisd.org/multilingual/programs/summer-programs",
+    "notes": "Accelerates students' English and literacy skills through Science, Math, and Reading while engaging in exciting projects. For emergent bilingual students in middle school.",
+    "ages": "Grades 6-8 (Emergent Bilingual students)",
+    "dates": "June 9 - June 26, 2026. Monday - Thursday, 8:30am - 1:15pm",
+    "registrationDate": "Registration begins March 3, 2026. Electronic and paper forms available from teachers.",
+    "cost": "Free for eligible students",
+    "location": "North: Garcia YMLA (7414 Johnny Morris Rd, 78724). South: Covington Middle School (3700 Convict Hill Rd, 78749)",
+    "type": "Day Camp",
+    "district": "Austin ISD"
+  },
+  {
+    "name": "Austin ISD - High School Summer School Programs",
+    "website": "https://www.austinisd.org/summer-school/hs",
+    "notes": "Includes Dual Language programs, EOC prep, Newcomer programs, ACE, and Summer Melt programs. Various programs for high school students.",
+    "ages": "Grades 9-12",
+    "dates": "Various: June 2 - July 11, 2026; June 9-26, etc. (varies by program)",
+    "registrationDate": "Check website for specific registration dates",
+    "cost": "Varies by program",
+    "location": "Multiple locations including Navarro, Travis, Eastside high schools",
+    "type": "Day Camp",
+    "district": "Austin ISD"
+  },
+  {
+    "name": "Round Rock ISD - Summer Camps",
+    "website": "https://www.roundrockisd.org/page/summer-camps",
+    "notes": "Round Rock Independent School District summer camp programs. Check website for specific program details, dates, and registration information.",
+    "ages": "Check website for age requirements",
+    "dates": "Check website for 2026 dates",
+    "registrationDate": "Check website for registration dates",
+    "cost": "Check website for pricing",
+    "location": "Round Rock ISD locations",
+    "type": "Day Camp",
+    "district": "Round Rock ISD"
+  }
+]

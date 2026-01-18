@@ -21,6 +21,9 @@ function CommunityCamps() {
     districtFilter: '',
   });
 
+  // Debug logging
+  console.log('CommunityCamps - camps:', camps.length, 'filtered:', filteredCamps.length, 'loading:', loading, 'error:', error);
+
   const handleClearFilters = () => {
     setSearchTerm('');
     setAgeFilter('');
@@ -47,7 +50,8 @@ function CommunityCamps() {
         <Header title="🏕️ Austin Summer Camps 2026" subtitle="Find the perfect summer camp for your child" />
         <main className="container">
           <div className="no-results">
-            <p>Error loading camps. Please refresh the page.</p>
+            <p>Error loading camps: {error}</p>
+            <p>Please check the browser console for more details and refresh the page.</p>
           </div>
         </main>
       </>
@@ -91,7 +95,7 @@ function CommunityCamps() {
       </main>
       <footer>
         <div className="container">
-          <p>Data sourced from Austin Summer Camps spreadsheet</p>
+          <p>Email: <a href="mailto:camelgirl.summercamp@gmail.com">camelgirl.summercamp@gmail.com</a></p>
           <p>Last updated: January 2026</p>
         </div>
       </footer>

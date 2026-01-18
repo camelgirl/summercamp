@@ -1,0 +1,7 @@
+# API routes to Netlify Functions
+/api/camps /.netlify/functions/camps 200
+/api/school-districts /.netlify/functions/school-districts 200
+
+# SPA fallback - must be last
+# Note: Static files (JSON, CSS, JS) are served automatically before this rule
+/* /index.html 200

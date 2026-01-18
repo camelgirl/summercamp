@@ -9,35 +9,38 @@ export function useCamps(apiEndpoint) {
     const fetchCamps = async () => {
       try {
         setLoading(true);
+        setError(null);
         
-        // Determine data URL - use static files for production, API for development
-        let dataUrl;
-        if (apiEndpoint === '/api/camps') {
-          // Try API first (for local dev), fallback to static file (for Netlify)
-          dataUrl = '/api/camps';
-        } else if (apiEndpoint === '/api/school-districts') {
-          dataUrl = '/api/school-districts';
-        } else {
-          dataUrl = apiEndpoint;
-        }
+        // Try API endpoint first (works with Netlify Functions in production, local server in dev)
+        let response = await fetch(apiEndpoint);
         
-        let response = await fetch(dataUrl);
-        
-        // If API fails (e.g., on Netlify), try static file
-        if (!response.ok && dataUrl.startsWith('/api/')) {
-          const staticUrl = dataUrl === '/api/camps' 
+        // If API fails, try static file as fallback
+        if (!response.ok) {
+          console.log(`API failed, trying static file...`);
+          const staticUrl = apiEndpoint === '/api/camps' 
             ? '/camps-data.json' 
             : '/school-district-camps.json';
           response = await fetch(staticUrl);
         }
         
-        if (!response.ok) throw new Error('Failed to fetch camps');
+        if (!response.ok) {
+          throw new Error(`Failed to fetch camps: ${response.status} ${response.statusText}`);
+        }
+        
         const data = await response.json();
+        
+        // Ensure data is an array
+        if (!Array.isArray(data)) {
+          throw new Error('Invalid data format: expected an array');
+        }
+        
+        console.log(`Loaded ${data.length} camps`);
         setCamps(data);
         setError(null);
       } catch (err) {
-        setError(err.message);
         console.error('Error loading camps:', err);
+        setError(err.message);
+        setCamps([]); // Set empty array on error
       } finally {
         setLoading(false);
       }
