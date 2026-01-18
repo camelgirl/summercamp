@@ -9,7 +9,28 @@ export function useCamps(apiEndpoint) {
     const fetchCamps = async () => {
       try {
         setLoading(true);
-        const response = await fetch(apiEndpoint);
+        
+        // Determine data URL - use static files for production, API for development
+        let dataUrl;
+        if (apiEndpoint === '/api/camps') {
+          // Try API first (for local dev), fallback to static file (for Netlify)
+          dataUrl = '/api/camps';
+        } else if (apiEndpoint === '/api/school-districts') {
+          dataUrl = '/api/school-districts';
+        } else {
+          dataUrl = apiEndpoint;
+        }
+        
+        let response = await fetch(dataUrl);
+        
+        // If API fails (e.g., on Netlify), try static file
+        if (!response.ok && dataUrl.startsWith('/api/')) {
+          const staticUrl = dataUrl === '/api/camps' 
+            ? '/camps-data.json' 
+            : '/school-district-camps.json';
+          response = await fetch(staticUrl);
+        }
+        
         if (!response.ok) throw new Error('Failed to fetch camps');
         const data = await response.json();
         setCamps(data);

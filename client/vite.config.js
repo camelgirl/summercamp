@@ -12,4 +12,9 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+  },
+  publicDir: 'public', // Ensures public folder files are copied to dist
 });
