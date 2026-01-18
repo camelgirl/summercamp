@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import CommunityCamps from './pages/CommunityCamps';
 import SchoolDistricts from './pages/SchoolDistricts';
-import './App.css';
 
 function App() {
   return (
