@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Summer Camps 2026</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🏕️ Austin Summer Camps 2026</h1>
+            <p class="subtitle">Find the perfect summer camp for your child</p>
+            <nav class="header-nav">
+                <a href="index.html" class="nav-link active">Community Camps</a>
+                <a href="school-districts.html" class="nav-link">School Districts</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="search-section">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search camps by name, type, or location...">
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div class="filters">
+                <select id="ageFilter">
+                    <option value="">All Ages</option>
+                    <option value="3">3 and under</option>
+                    <option value="4">4 and under</option>
+                    <option value="5">5 and under</option>
+                    <option value="6">6 and under</option>
+                    <option value="7">7 and under</option>
+                    <option value="8">8 and under</option>
+                    <option value="9">9 and under</option>
+                    <option value="10">10 and under</option>
+                    <option value="12">12 and under</option>
+                    <option value="13">13 and under</option>
+                    <option value="14">14 and under</option>
+                    <option value="16">16 and under</option>
+                </select>
+                
+                <select id="typeFilter">
+                    <option value="">All Types</option>
+                    <option value="Day Camp">Day Camp</option>
+                    <option value="Overnight Camp">Overnight Camp</option>
+                </select>
+                
+                <button id="clearFilters" class="clear-btn">Clear Filters</button>
+            </div>
+            
+            <div class="results-count">
+                <span id="resultsCount">0</span> camp<span id="resultsPlural">s</span> found
+            </div>
+            
+            <div class="view-toggle">
+                <button id="listViewBtn" class="view-btn active">📋 List View</button>
+                <button id="mapViewBtn" class="view-btn">🗺️ Map View</button>
+            </div>
+        </div>
+
+        <div id="mapContainer" class="map-container" style="display: none;">
+            <div id="map"></div>
+        </div>
+
+        <div id="campsContainer" class="camps-grid">
+            <!-- Camp cards will be inserted here by JavaScript -->
+        </div>
+
+        <div id="noResults" class="no-results" style="display: none;">
+            <p>No camps found matching your criteria. Try adjusting your search or filters.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Data sourced from Austin Summer Camps spreadsheet</p>
+            <p>Last updated: January 2026</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
