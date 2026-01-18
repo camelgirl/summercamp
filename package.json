@@ -9,11 +9,20 @@
     "dev:server": "cd server && npm run dev",
     "build": "cd client && npm run build",
     "start": "cd server && npm start",
-    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install",
+    "migrate:neon": "node database/migrate-to-neon.js"
   },
-  "keywords": ["summer-camps", "austin", "react", "nodejs"],
+  "keywords": [
+    "summer-camps",
+    "austin",
+    "react",
+    "nodejs"
+  ],
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "@netlify/neon": "^0.1.0"
+  },
   "devDependencies": {
     "concurrently": "^8.2.2"
   }

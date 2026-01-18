@@ -53,7 +53,7 @@ export function useCamps(apiEndpoint) {
 }
 
 export function useFilteredCamps(camps, filters) {
-  const { searchTerm, ageFilter, typeFilter, districtFilter } = filters;
+  const { searchTerm, ageFilter, typeFilter, districtFilter, costFilter, dateFilter } = filters;
 
   const filteredCamps = useMemo(() => {
     return camps.filter((camp) => {
@@ -70,6 +70,71 @@ export function useFilteredCamps(camps, filters) {
 
       // Type filter
       const matchesType = !typeFilter || camp.type === typeFilter;
+
+      // Cost filter
+      let matchesCost = true;
+      if (costFilter && camp.cost) {
+        const costStr = camp.cost.toLowerCase();
+        const costNum = extractCost(costStr);
+        
+        switch (costFilter) {
+          case 'free':
+            matchesCost = costStr.includes('free') || costNum === 0;
+            break;
+          case '0-100':
+            matchesCost = costNum > 0 && costNum <= 100;
+            break;
+          case '100-200':
+            matchesCost = costNum > 100 && costNum <= 200;
+            break;
+          case '200-300':
+            matchesCost = costNum > 200 && costNum <= 300;
+            break;
+          case '300+':
+            matchesCost = costNum > 300;
+            break;
+          default:
+            matchesCost = true;
+        }
+      }
+
+      // Date filter
+      let matchesDate = true;
+      if (dateFilter && camp.dates) {
+        const datesStr = camp.dates.toLowerCase();
+        const monthMap = {
+          'may': 'may',
+          'june': 'june',
+          'july': 'july',
+          'august': 'august',
+        };
+        
+        switch (dateFilter) {
+          case 'may':
+            matchesDate = datesStr.includes('may');
+            break;
+          case 'june':
+            matchesDate = datesStr.includes('june');
+            break;
+          case 'july':
+            matchesDate = datesStr.includes('july');
+            break;
+          case 'august':
+            matchesDate = datesStr.includes('august');
+            break;
+          case 'may-june':
+            matchesDate = datesStr.includes('may') || datesStr.includes('june');
+            break;
+          case 'june-july':
+            matchesDate = datesStr.includes('june') || datesStr.includes('july');
+            break;
+          case 'july-august':
+            matchesDate = datesStr.includes('july') || datesStr.includes('august');
+            break;
+          default:
+            matchesDate = true;
+        }
+      }
 
       // Age filter
       let matchesAge = true;
@@ -134,9 +199,23 @@ export function useFilteredCamps(camps, filters) {
         }
       }
 
-      return matchesSearch && matchesDistrict && matchesType && matchesAge;
+      return matchesSearch && matchesDistrict && matchesType && matchesAge && matchesCost && matchesDate;
     });
-  }, [camps, searchTerm, ageFilter, typeFilter, districtFilter]);
+  }, [camps, searchTerm, ageFilter, typeFilter, districtFilter, costFilter, dateFilter]);
 
   return filteredCamps;
+}
+
+// Helper function to extract cost from string
+function extractCost(costStr) {
+  // Try to find dollar amounts like $100, $200/week, etc.
+  const match = costStr.match(/\$(\d+)/);
+  if (match) {
+    return parseInt(match[1]);
+  }
+  // Check for free
+  if (costStr.includes('free')) {
+    return 0;
+  }
+  return null;
 }

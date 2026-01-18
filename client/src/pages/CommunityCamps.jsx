@@ -5,6 +5,9 @@ import SearchSection from '../components/SearchSection';
 import CampCard from '../components/CampCard';
 import MapView from '../components/MapView';
 import AddCampForm from '../components/AddCampForm';
+import CampComparison from '../components/CampComparison';
+import { useComparison } from '../context/ComparisonContext';
+import { useReviews } from '../hooks/useReviews';
 import { useCamps, useFilteredCamps } from '../hooks/useCamps';
 import { getCampCoordinates } from '../utils/geocoding';
 import '../styles.css';
@@ -13,16 +16,40 @@ function CommunityCamps() {
   const [searchTerm, setSearchTerm] = useState('');
   const [ageFilter, setAgeFilter] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
+  const [costFilter, setCostFilter] = useState('');
+  const [dateFilter, setDateFilter] = useState('');
+  const [ratingFilter, setRatingFilter] = useState('');
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const [currentView, setCurrentView] = useState('list');
   const [isAddCampOpen, setIsAddCampOpen] = useState(false);
+  const { 
+    comparisonCamps, 
+    showComparison, 
+    setShowComparison, 
+    isInComparison,
+    removeFromComparison 
+  } = useComparison();
 
   const { camps, loading, error } = useCamps('/api/camps');
-  const filteredCamps = useFilteredCamps(camps, {
+  const { getCampRating } = useReviews();
+  
+  // Filter camps with rating filter
+  const preFilteredCamps = useFilteredCamps(camps, {
     searchTerm,
     ageFilter,
     typeFilter,
     districtFilter: '',
+    costFilter,
+    dateFilter,
   });
+  
+  // Apply rating filter
+  const filteredCamps = ratingFilter 
+    ? preFilteredCamps.filter(camp => {
+        const rating = getCampRating(camp.name);
+        return rating && rating >= parseFloat(ratingFilter);
+      })
+    : preFilteredCamps;
 
   // Debug logging
   console.log('CommunityCamps - camps:', camps.length, 'filtered:', filteredCamps.length, 'loading:', loading, 'error:', error);
@@ -31,6 +58,9 @@ function CommunityCamps() {
     setSearchTerm('');
     setAgeFilter('');
     setTypeFilter('');
+    setCostFilter('');
+    setDateFilter('');
+    setRatingFilter('');
   };
 
   if (loading) {
@@ -72,8 +102,8 @@ function CommunityCamps() {
             onClick={() => setIsAddCampOpen(true)}
             aria-label="Add a camp"
           >
-            <span>➕</span>
-            <span>Add a Camp</span>
+            <span className="button-icon">➕</span>
+            Add a Camp
           </button>
         </div>
         <SearchSection
@@ -83,6 +113,14 @@ function CommunityCamps() {
           onAgeFilterChange={setAgeFilter}
           typeFilter={typeFilter}
           onTypeFilterChange={setTypeFilter}
+          costFilter={costFilter}
+          onCostFilterChange={setCostFilter}
+          dateFilter={dateFilter}
+          onDateFilterChange={setDateFilter}
+          ratingFilter={ratingFilter}
+          onRatingFilterChange={setRatingFilter}
+          showAdvanced={showAdvanced}
+          onToggleAdvanced={() => setShowAdvanced(!showAdvanced)}
           onClearFilters={handleClearFilters}
           resultsCount={filteredCamps.length}
           currentView={currentView}
@@ -100,14 +138,38 @@ function CommunityCamps() {
             ) : (
               <div className="camps-grid">
                 {filteredCamps.map((camp, index) => (
-                  <CampCard key={index} camp={camp} />
+                  <CampCard 
+                    key={index} 
+                    camp={camp} 
+                    isInComparison={isInComparison(camp)}
+                  />
                 ))}
               </div>
             )}
           </>
         )}
+        {comparisonCamps.length > 0 && (
+          <div className="comparison-fab" onClick={() => setShowComparison(true)}>
+            ⚖️ Compare ({comparisonCamps.length})
+          </div>
+        )}
       </main>
       <AddCampForm isOpen={isAddCampOpen} onClose={() => setIsAddCampOpen(false)} />
+      {showComparison && (
+        <CampComparison
+          camps={comparisonCamps}
+          isOpen={showComparison}
+          onClose={() => setShowComparison(false)}
+          onRemove={(newCamps) => {
+            // Remove camps that are not in newCamps
+            comparisonCamps.forEach(camp => {
+              if (!newCamps.some(c => c.name === camp.name)) {
+                removeFromComparison(camp);
+              }
+            });
+          }}
+        />
+      )}
       <footer>
         <div className="container">
           <p>Email: <a href="mailto:camelgirl.summercamp@gmail.com">camelgirl.summercamp@gmail.com</a></p>

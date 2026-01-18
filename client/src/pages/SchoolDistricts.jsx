@@ -4,6 +4,8 @@ import Subscribe from '../components/Subscribe';
 import SearchSection from '../components/SearchSection';
 import CampCard from '../components/CampCard';
 import MapView from '../components/MapView';
+import CampComparison from '../components/CampComparison';
+import { useComparison } from '../context/ComparisonContext';
 import { useCamps, useFilteredCamps } from '../hooks/useCamps';
 import { getCampCoordinates } from '../utils/geocoding';
 import '../styles.css';
@@ -13,6 +15,13 @@ function SchoolDistricts() {
   const [ageFilter, setAgeFilter] = useState('');
   const [districtFilter, setDistrictFilter] = useState('');
   const [currentView, setCurrentView] = useState('list');
+  const { 
+    comparisonCamps, 
+    showComparison, 
+    setShowComparison, 
+    isInComparison,
+    removeFromComparison 
+  } = useComparison();
 
   const { camps, loading, error } = useCamps('/api/school-districts');
   const filteredCamps = useFilteredCamps(camps, {
@@ -92,13 +101,37 @@ function SchoolDistricts() {
             ) : (
               <div className="camps-grid">
                 {filteredCamps.map((camp, index) => (
-                  <CampCard key={index} camp={camp} />
+                  <CampCard 
+                    key={index} 
+                    camp={camp} 
+                    isInComparison={isInComparison(camp)}
+                  />
                 ))}
               </div>
             )}
           </>
         )}
+        {comparisonCamps.length > 0 && (
+          <div className="comparison-fab" onClick={() => setShowComparison(true)}>
+            ⚖️ Compare ({comparisonCamps.length})
+          </div>
+        )}
       </main>
+      {showComparison && (
+        <CampComparison
+          camps={comparisonCamps}
+          isOpen={showComparison}
+          onClose={() => setShowComparison(false)}
+          onRemove={(newCamps) => {
+            // Remove camps that are not in newCamps
+            comparisonCamps.forEach(camp => {
+              if (!newCamps.some(c => c.name === camp.name)) {
+                removeFromComparison(camp);
+              }
+            });
+          }}
+        />
+      )}
       <footer>
         <div className="container">
           <p>School district program information sourced from official district websites</p>
