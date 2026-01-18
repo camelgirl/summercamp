@@ -1,144 +1,114 @@
 # Austin Summer Camps 2026
 
-A modern, responsive website showcasing summer camp options in Austin, Texas for 2026.
+Modern React + Node.js application for browsing Austin summer camps. Built with React 18, Vite, Express.js, and React-Leaflet.
 
-## Features
+## 🚀 Tech Stack
 
-- **Search Functionality**: Search camps by name, type, or location
-- **Age Filtering**: Filter camps by minimum age requirement
-- **Type Filtering**: Filter by camp type (Day Camp, Overnight Camp, etc.)
-- **Map View**: Interactive map showing all camp locations with markers
-  - Click markers to see camp details
-  - Map automatically adjusts to show all filtered camps
-  - Toggle between List View and Map View
-- **Responsive Design**: Works beautifully on desktop, tablet, and mobile devices
-- **Modern UI**: Clean, modern interface with smooth animations and hover effects
-- **Camp Details**: View comprehensive information including:
-  - Camp name and type
-  - Website links
-  - Age requirements
-  - Camp dates
-  - Registration dates
-  - Cost information
-  - Location
-  - Additional notes
+- **Frontend**: React 18 + Vite
+- **Backend**: Node.js + Express
+- **Maps**: React-Leaflet
+- **Routing**: React Router v6
+- **Styling**: CSS Modules + CSS Variables
 
-## Getting Started
-
-### Option 1: Simple Local Server (Recommended)
-
-Since the website uses JavaScript fetch to load the JSON data, you'll need to run it through a local server to avoid CORS issues.
-
-#### Using Python 3:
-```bash
-cd /Users/yinyanhe/Documents/summercamp
-python3 -m http.server 8000
-```
-
-Then open your browser and navigate to:
-```
-http://localhost:8000
-```
-
-#### Using Node.js (if you have it installed):
-```bash
-cd /Users/yinyanhe/Documents/summercamp
-npx http-server -p 8000
-```
-
-Then open your browser and navigate to:
-```
-http://localhost:8000
-```
-
-### Option 2: Direct File Opening
-
-You can also open `index.html` directly in your browser, but note that some browsers may block loading the JSON file due to CORS restrictions. If you encounter issues, use Option 1.
-
-## File Structure
+## 📁 Project Structure
 
 ```
 summercamp/
-├── index.html          # Main HTML file
-├── styles.css          # CSS styling
-├── script.js           # JavaScript functionality (includes map features)
-├── camps-data.json     # Camp data in JSON format
-└── README.md           # This file
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/     # Reusable components
+│   │   ├── pages/          # Page components
+│   │   ├── hooks/          # Custom React hooks
+│   │   ├── utils/          # Utility functions
+│   │   └── styles.css      # Global styles
+│   └── package.json
+├── server/                 # Express backend
+│   ├── server.js          # API server
+│   └── package.json
+├── camps-data.json        # Community camps data
+├── school-district-camps.json  # School district data
+└── package.json           # Root package.json
 ```
 
-## Map Features
+## 🛠️ Setup & Installation
 
-The website includes an interactive map powered by [Leaflet.js](https://leafletjs.com/) and OpenStreetMap:
+### 1. Install Dependencies
 
-- **Automatic Geocoding**: Camp locations are automatically geocoded from addresses
-- **Interactive Markers**: Click on any marker to see camp details
-- **Smart Filtering**: Map updates automatically when you apply search or filters
-- **Responsive**: Map works on all device sizes
-- **No API Key Required**: Uses free OpenStreetMap tiles
-
-The map view can be toggled using the "Map View" button in the search section.
-
-## Data Source
-
-The camp information is consolidated from the [Austin Summer Camps Google Sheet](https://docs.google.com/spreadsheets/d/1DhxQB_DwgOj8TuCl3aMBb1WPKMzA3lZ5NFZjG-mjfNg/edit?usp=sharing) and enriched with additional data from camp websites and directories.
-
-## Camp Listings
-
-The website currently features **36 summer camps** in and around Austin, Texas, including:
-
-- **Day Camps**: Traditional day camps, specialty camps (STEM, arts, sports, theater)
-- **Overnight Camps**: Full overnight camp experiences
-- **Free/Low-Cost Options**: Including Austin Sunshine Camps (free for qualifying families)
-- **City Programs**: Austin Parks & Recreation camps with resident/non-resident pricing
-- **Specialty Camps**: STEM, arts, theater, sports, nature, and more
-
-All camp information has been enriched with details from official websites including dates, costs, age ranges, locations, and registration information.
-
-## Customization
-
-### Adding New Camps
-
-Edit `camps-data.json` and add a new camp object following this structure:
-
-```json
-{
-  "name": "Camp Name",
-  "website": "https://example.com",
-  "notes": "Additional information",
-  "ages": "5-12 yrs",
-  "dates": "June 1-5",
-  "registrationDate": "Open now",
-  "cost": "$500",
-  "location": "Austin, TX",
-  "type": "Day Camp"
-}
+```bash
+npm run install:all
 ```
 
-### Styling
+This will install dependencies for:
+- Root project (concurrently for running both servers)
+- React client
+- Express server
 
-Modify `styles.css` to customize colors, fonts, and layout. The CSS uses CSS variables for easy theming:
+### 2. Development Mode
 
-- `--primary-color`: Main brand color
-- `--secondary-color`: Secondary/accent color
-- `--accent-color`: Highlight color
-- `--bg-color`: Background color
-- `--card-bg`: Card background color
+Run both frontend and backend concurrently:
 
-## Browser Support
+```bash
+npm run dev
+```
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+This starts:
+- **Frontend**: http://localhost:3000 (Vite dev server)
+- **Backend**: http://localhost:3001 (Express API)
 
-## Deployment
+### 3. Build for Production
 
-Want to host this website online? See **[DEPLOYMENT.md](DEPLOYMENT.md)** for easy, free hosting options including:
-- Netlify (drag-and-drop, easiest)
-- GitHub Pages
-- Vercel
-- And more!
+```bash
+npm run build
+```
 
-## License
+This builds the React app to `client/dist/`
 
-This project is for informational purposes. Camp information is sourced from publicly available data.
+### 4. Production Server
+
+```bash
+npm start
+```
+
+Starts the Express server which serves the built React app and API.
+
+## 📡 API Endpoints
+
+- `GET /api/camps` - Returns all community camps
+- `GET /api/school-districts` - Returns all school district programs
+
+## 🎨 Features
+
+- ✅ Modern React components with hooks
+- ✅ Server-side API for data
+- ✅ Interactive map with React-Leaflet
+- ✅ Search and filtering
+- ✅ Responsive design
+- ✅ Fast development with Vite
+- ✅ Production-ready build
+
+## 📊 Data Files
+
+The application uses JSON data files:
+- `camps-data.json` - Community summer camps (35 camps)
+- `school-district-camps.json` - School district programs (5 programs)
+
+## 🚢 Deployment
+
+### Option 1: Deploy to Vercel/Netlify
+
+1. Build the app: `npm run build`
+2. Deploy `client/dist` to Vercel or Netlify
+3. Deploy server separately or use serverless functions
+
+### Option 2: Deploy Full Stack
+
+1. Build: `npm run build`
+2. Start server: `npm start`
+3. Server serves both API and React app
+
+## 📝 Development Notes
+
+- Frontend hot-reloads on file changes (Vite)
+- Backend uses `--watch` flag for auto-restart
+- API proxy configured in `vite.config.js`
+- All styles maintained from original design

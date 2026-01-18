@@ -32,7 +32,8 @@ function CommunityCamps() {
       <>
         <Header title="🏕️ Austin Summer Camps 2026" subtitle="Find the perfect summer camp for your child" />
         <main className="container">
-          <div className="no-results">
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
             <p>Loading camps...</p>
           </div>
         </main>

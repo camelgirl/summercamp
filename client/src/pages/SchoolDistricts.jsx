@@ -32,7 +32,8 @@ function SchoolDistricts() {
       <>
         <Header title="🎓 School District Summer Programs" subtitle="Austin area school district summer camps and programs" />
         <main className="container">
-          <div className="no-results">
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
             <p>Loading programs...</p>
           </div>
         </main>
