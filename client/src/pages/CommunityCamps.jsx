@@ -72,7 +72,8 @@ function CommunityCamps() {
             onClick={() => setIsAddCampOpen(true)}
             aria-label="Add a camp"
           >
-            ➕ Add a Camp
+            <span>➕</span>
+            <span>Add a Camp</span>
           </button>
         </div>
         <SearchSection
