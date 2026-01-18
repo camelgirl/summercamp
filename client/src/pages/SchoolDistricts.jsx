@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from '../components/Header';
+import Subscribe from '../components/Subscribe';
 import SearchSection from '../components/SearchSection';
 import CampCard from '../components/CampCard';
 import MapView from '../components/MapView';
@@ -57,6 +58,7 @@ function SchoolDistricts() {
   return (
     <>
       <Header title="🎓 School District Summer Programs" subtitle="Austin area school district summer camps and programs" />
+      <Subscribe />
       <main className="container">
         <div className="intro-section">
           <p>

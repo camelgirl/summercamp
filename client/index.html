@@ -8,6 +8,11 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Hidden form for Netlify to detect during build -->
+    <form name="subscribe" netlify netlify-honeypot="bot-field" hidden>
+      <input type="email" name="email" />
+      <input type="hidden" name="form-name" value="subscribe" />
+    </form>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

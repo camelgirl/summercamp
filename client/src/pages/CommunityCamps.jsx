@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Header from '../components/Header';
+import Subscribe from '../components/Subscribe';
 import SearchSection from '../components/SearchSection';
 import CampCard from '../components/CampCard';
 import MapView from '../components/MapView';
@@ -61,6 +62,7 @@ function CommunityCamps() {
   return (
     <>
       <Header title="🏕️ Austin Summer Camps 2026" subtitle="Find the perfect summer camp for your child" />
+      <Subscribe />
       <main className="container">
         <SearchSection
           searchTerm={searchTerm}
