@@ -3,6 +3,11 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const FAVORITES_KEY = 'summercamp_favorites';
 const FavoritesContext = createContext();
 
+// Export getCampId function outside component
+export const getCampId = (camp) => {
+  return camp.name + (camp.category || camp.district ? `_${camp.category || camp.district}` : '');
+};
+
 export function FavoritesProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
 
@@ -27,10 +32,6 @@ export function FavoritesProvider({ children }) {
       console.error('Error saving favorites:', error);
     }
   }, [favorites]);
-
-  const getCampId = (camp) => {
-    return camp.name + (camp.category || camp.district ? `_${camp.category || camp.district}` : '');
-  };
 
   const addFavorite = (camp) => {
     const campId = getCampId(camp);
