@@ -154,14 +154,14 @@
     "type": "Day Camp"
   },
   {
-    "name": "YMCA",
-    "website": "https://www.austinymca.org/camp/summer-day/",
-    "notes": "Greater Austin YMCA summer day camps. Before/after care options available. Discounts for members. Multiple locations and schedules available.",
-    "ages": "Ages 3-4 (preschool); ages 5+ (elementary and middle school)",
-    "dates": "Starts day after Memorial Day to a week before school begins (varies by school district)",
-    "registrationDate": "Registration opening in late January!",
-    "cost": "Full-day: ~$285-$365/week (members), guests pay more. Half-day: ~$135-$170 for members. Prices vary by location and membership status.",
-    "location": "Multiple locations throughout Greater Austin area",
+    "name": "YMCA of Central Texas - General Information",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "YMCA of Central Texas offers a wide variety of summer day camps across multiple locations. Programs focus on character development, outdoor education, swimming, arts and crafts, archery, rock climbing, and more. Camp ABC's: Accomplishment, Belonging, and Character. Core values: Honesty, Caring, Respect, and Responsibility. Before/after care options available. Discounts for members. Multiple locations and schedules available including Outdoor Day Camps, Adventure Academy, Specialty Camps, and Overnight Camps.",
+    "ages": "Grades K-9 (Outdoor Day Camp), Ages 8-14 (Overnight Camp), varies by specialty program",
+    "dates": "Spring Break Camp: March 16th-20th (Waco's: March 9th-13th). Summer Camp: May 26th - August 17th (specific start and end dates may vary by location). Overnight Camp: June 7th - August 1st",
+    "registrationDate": "Check website for registration dates",
+    "cost": "Prices vary by location, program type, and member status. Spring Break: $150-$250/week. Summer rates vary. Member discounts available.",
+    "location": "Multiple locations: Round Rock, Cedar Park, Hutto, Waco, Brazos Valley, Twin Lakes, CHASCO, and more",
     "type": "Day Camp"
   },
   {
@@ -383,5 +383,225 @@
     "cost": "Fees depend on overnight vs day camp",
     "location": "Granbury, TX",
     "type": "Overnight Camp"
+  },
+  {
+    "name": "KE Camps - Camp Great Hills",
+    "website": "https://kecamps.com/camps/great-hills-country-club",
+    "notes": "Traditional day camp at Great Hills Country Club. Activities include golf (2 sessions/week), tennis (2 sessions/week), swimming (Tuesday-Friday), arts & crafts, group games, fun with foods, STEM challenges, and archery tag. Wacky Wednesdays with themed activities and Thankful Thursdays with community service projects. Camp hours: 9:00am-3:00pm. Drop-off: 8:30-9:00am, Pick-up: 3:00-3:30pm. Lunch and snacks provided by club. Nut-aware camp.",
+    "ages": "5-10 (must be 5 by first day of camp, potty-trained)",
+    "dates": "2026 dates and rates coming soon",
+    "registrationDate": "Registration for Summer 2026 will open soon",
+    "cost": "2026 rates coming soon. Registration fee: $45 (includes 2 camp shirts). Full payment due upon registration. ACH payments preferred; credit cards subject to 2.75% surcharge.",
+    "location": "5914 Lost Horizon Drive, Austin, TX 78759 (Great Hills Country Club)",
+    "type": "Day Camp"
+  },
+  {
+    "name": "Cedar Park - CompuChild STEAM Camps",
+    "website": "https://www.cedarparktexas.gov/1260/Camps",
+    "notes": "Entrepreneurial STEAM programs offering creative writing, robotics, debate, video game design, coding, drones, AI game creation, and chess. Wide range of educational classes and camps for youth interested in STEAM and beyond.",
+    "ages": "Varies by program",
+    "dates": "Check website for 2026 dates",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing",
+    "location": "Cedar Park, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "Cedar Park - WIZE Computing Academy Camps",
+    "website": "https://www.cedarparktexas.gov/1260/Camps",
+    "notes": "STEAM programs for young learners including game design and development, AI and robotics, and computer coding. Classes create space for ample student-to-teacher learning ratios with goal of expanding youth curiosity. Programs include 3D Designing, Modeling & Printing, and 2D Game Animation Development Using Scratch.",
+    "ages": "Varies by program",
+    "dates": "Check website for 2026 dates",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing",
+    "location": "Cedar Park, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "Cedar Park - Preschool Nature Camp",
+    "website": "https://www.cedarparktexas.gov/1260/Camps",
+    "notes": "Nature-themed activities, hikes, scavenger hunts, and education combine into one great program for this parent-and-me nature camp. Camp meets each day at a different park in Cedar Park.",
+    "ages": "Preschool (parent-and-me)",
+    "dates": "Check website for 2026 dates",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing",
+    "location": "Various parks in Cedar Park, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "Cedar Park - Cannons Lacrosse Summer Camp",
+    "website": "https://www.cedarparktexas.gov/1260/Camps",
+    "notes": "Lacrosse camp for all skill levels. Perfect for beginners and those looking to work on stick and shooting skills. No experience required. Sticks provided if you don't have one. Please bring mouthguard and water.",
+    "ages": "Rising 1st grade through rising 8th grade",
+    "dates": "Check website for 2026 dates",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing",
+    "location": "Lakeline Park, Cedar Park, TX (multi-purpose practice fields)",
+    "type": "Day Camp"
+  },
+  {
+    "name": "Cedar Park - Lone Star Hoops Basketball Camp",
+    "website": "https://www.cedarparktexas.gov/1260/Camps",
+    "notes": "Original basketball camp when Cedar Park Recreation Center opened in 2009. 4-day camps including 30+ hours of high-energy, up-beat, total immersion basketball skill development. Campers receive full-size basketball, Lone Star Hoops t-shirt, and compete for dozens of ribbons, medals, trophies and assortment of awards.",
+    "ages": "Varies by program",
+    "dates": "Check website for 2026 dates",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing",
+    "location": "Cedar Park Recreation Center, Cedar Park, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "Cedar Park - COOL'inary Cooking Club - Basic Training Baking Boot Camp",
+    "website": "https://www.cedarparktexas.gov/1260/Camps",
+    "notes": "Baking camp for aspiring bakers who love to get their hands sticky in the kitchen. Young chefs learn basics of scratch-baking and make everything from pita bread to lemon tarts, challah to cornbread, and more. Create sweet and savory baked goods in this tasty, engaging, and imaginative camp!",
+    "ages": "Varies by program",
+    "dates": "Check website for 2026 dates",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing",
+    "location": "Cedar Park, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Camp Round Rock",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Outdoor Day Camp with activities including archery, rock climbing, arts and crafts, and much more. Camp focuses on helping campers develop confidence, improve social skills, and learn new skills. Full-day camp option. Camp hours: 7am-6pm.",
+    "ages": "Grades K-9",
+    "dates": "Spring Break Camp: March 16th-20th. Summer Camp: May 26th - August 17th (specific start and end dates may vary by location)",
+    "registrationDate": "Check website for registration",
+    "cost": "Spring Break: $210-$240/week depending on member status. Summer rates vary by location and member status.",
+    "location": "Camp Round Rock, Round Rock, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Camp Twin Lakes",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Outdoor Day Camp with activities including archery, rock climbing, arts and crafts, and much more. Camp focuses on helping campers develop confidence, improve social skills, and learn new skills. Full-day camp option. Camp hours: 7am-6pm.",
+    "ages": "Grades K-9",
+    "dates": "Spring Break Camp: March 16th-20th. Summer Camp: May 26th - August 17th (specific start and end dates may vary by location)",
+    "registrationDate": "Check website for registration",
+    "cost": "Spring Break: $225-$250/week depending on member status. Summer rates vary by location and member status.",
+    "location": "Camp Twin Lakes, Austin area",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Camp Brightwell",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Outdoor Day Camp with activities including archery, rock climbing, arts and crafts, and much more. Camp hours: 7am-6pm.",
+    "ages": "Grades K-9",
+    "dates": "Spring Break Camp: March 16th-20th. Summer Camp: May 26th - August 17th",
+    "registrationDate": "Check website for registration",
+    "cost": "$200-$200/week depending on member status. Summer rates vary.",
+    "location": "Camp Brightwell, Austin area",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Camp Brazos Valley",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Day Camp at the YMCA of Central Texas. Campers spend their week outdoors participating in a wide range of exciting camp activities focused on developing confidence, improving social skills, and learning new skills. Activities include rock climbing, creative arts, archery and much more. Campers should bring a nut-free lunch and water bottle; snack provided. Camp hours: 7am-6pm.",
+    "ages": "Grades K-9",
+    "dates": "Spring Break Camp: March 9th-13th. Summer Camp: May 26th - August 17th",
+    "registrationDate": "Check website for registration",
+    "cost": "$185-$200/week depending on member status. Summer rates vary.",
+    "location": "Brazos Valley, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Greater Waco YMCA Spring Break Camp",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Spring Break camp with opportunity to participate in exciting spring activities, including swimming, arts & crafts, STEAM, rock wall, archery and more! Camp hours: 7am-6pm.",
+    "ages": "Grades K-9",
+    "dates": "Spring Break: March 9th-13th",
+    "registrationDate": "Check website for registration",
+    "cost": "$150-$200/week depending on member status",
+    "location": "Greater Waco YMCA, Waco, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - CHASCO Family YMCA Spring Break Camp",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Spring Break camp at CHASCO Family YMCA. Give your child the chance to make new friends, discover new talents, and enjoy a spring break full of fun and adventure! Camp hours: 9am-1pm.",
+    "ages": "Kinder - 5th Grade",
+    "dates": "Spring Break: March 16th-20th",
+    "registrationDate": "Check website for registration",
+    "cost": "$165-$222/week depending on member status",
+    "location": "CHASCO Family YMCA, Austin area",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Double File Spring Break Camp",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Spring Break camp for kids in Kinder - 5th Grade. Uses fun and challenging activities while on-site to help each camper 'Discover their own Adventure' this spring!",
+    "ages": "Kinder - 5th Grade",
+    "dates": "Spring Break: March 16th-20th",
+    "registrationDate": "Check website for registration",
+    "cost": "$200-$250/week depending on member status",
+    "location": "Double File Elementary, Round Rock, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Bar W Spring Break Camp",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Spring Break camp for kids in Kinder - 5th Grade. Uses fun and challenging activities while on-site to help each camper 'Discover their own Adventure' this spring!",
+    "ages": "Kinder - 5th Grade",
+    "dates": "Spring Break: March 16th-20th",
+    "registrationDate": "Check website for registration",
+    "cost": "$200-$250/week depending on member status",
+    "location": "Bar W Elementary, Leander, TX",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Adventure Academy Camps",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Indoor Full-Day Camp, known as Adventure Academy. Offered at various ISDs around Williamson County, and in WISD. Spring Break locations: Mitchell Elementary (GISD), Nadine Johnson Elementary (HISD), Grandview Hills Elementary (LISD), Pleasant Hill Elementary (LISD), Bar W Elementary (LHISD), Double File Elementary (RRISD), Great Oaks Elementary (RRISD).",
+    "ages": "Grades K-9",
+    "dates": "Spring Break Camp: March 16th-20th (Waco's: March 9th-13th). Summer Camp: May 26th - August 17th (specific start and end dates may vary by location)",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing by location and member status",
+    "location": "Various ISD locations in Williamson County and WISD",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Specialty Camps",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Specialty camps offered at CHASCO, Hutto, Twin Lakes, and Waco. Children can participate in a different camp each week throughout the summer, as well as during spring break or holiday breaks. Half-Day Camps include Art Lab, eSports, Cooking, Basketball, Soccer, Cake Decorating, Gymnastics, Kreative Kids, and More. Camps offered vary by location.",
+    "ages": "Varies by program",
+    "dates": "Spring Break Camp: March 16th-20th (Waco's: March 9th-13th). Summer Camp: May 26th - August 17th",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing by location and program",
+    "location": "CHASCO, Hutto, Twin Lakes, and Waco locations",
+    "type": "Day Camp"
+  },
+  {
+    "name": "YMCA of Central Texas - Overnight Camp",
+    "website": "https://ymcactx.org/camp/",
+    "notes": "Traditional Overnight Camp is a weeklong camp (Sunday drop-off and Saturday pick-up) for boys and girls with emphasis on skill-building and character development. New for Summer 2026! Half-Week Adventure is a flexible, two-night overnight program that gives campers the excitement of staying at camp while still offering the comfort of a shorter commitment.",
+    "ages": "Ages 8-14",
+    "dates": "Summer Camp: June 7th - August 1st",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing",
+    "location": "YMCA of Central Texas overnight camp location",
+    "type": "Overnight Camp"
+  },
+  {
+    "name": "ACES4Kids Summer Camp",
+    "website": "https://aces4kids.com/brochure/summer-camp/",
+    "notes": "Summer camp programs - check website for detailed information and program offerings.",
+    "ages": "Check website for age requirements",
+    "dates": "Check website for 2026 dates",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing",
+    "location": "Austin area",
+    "type": "Day Camp"
+  },
+  {
+    "name": "Camp Vámonos",
+    "website": "http://www.campvamonos.com/",
+    "notes": "Spanish immersion summer camp that combines language learning with daily field trips. Campers explore local parks, museums, and attractions while practicing Spanish in real-world contexts. Active exploration and cultural experiences.",
+    "ages": "Elementary-aged children",
+    "dates": "Check website for 2026 dates",
+    "registrationDate": "Check website for registration",
+    "cost": "Check website for pricing",
+    "location": "Austin/Round Rock area",
+    "type": "Day Camp"
   }
 ]
