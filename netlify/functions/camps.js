@@ -1,43 +1,14 @@
-// Netlify Serverless Function for camps data using Neon database
-const { neon } = require('@netlify/neon');
+// Netlify Serverless Function for camps data
+// Uses JSON file directly for immediate updates, with optional database fallback
+const { readFileSync } = require('fs');
+const { join } = require('path');
 
 exports.handler = async (event, context) => {
   try {
-    // Initialize Neon client (automatically uses NETLIFY_DATABASE_URL)
-    const sql = neon();
-    
-    // Query camps from database
-    const camps = await sql`
-      SELECT 
-        id,
-        name,
-        website,
-        ages,
-        dates,
-        registration_date as "registrationDate",
-        cost,
-        location,
-        type,
-        district,
-        notes
-      FROM camps
-      WHERE category = 'community'
-      ORDER BY name ASC
-    `;
-    
-    // Transform to match original JSON format
-    const campsData = camps.map(camp => ({
-      name: camp.name,
-      website: camp.website,
-      ages: camp.ages,
-      dates: camp.dates,
-      registrationDate: camp.registrationDate,
-      cost: camp.cost,
-      location: camp.location,
-      type: camp.type,
-      district: camp.district,
-      notes: camp.notes,
-    }));
+    // Read directly from JSON file for immediate updates
+    // This ensures new camps appear immediately without needing database migration
+    const jsonPath = join(__dirname, 'camps-data.json');
+    const campsData = JSON.parse(readFileSync(jsonPath, 'utf8'));
     
     return {
       statusCode: 200,
