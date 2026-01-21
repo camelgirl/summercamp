@@ -4,6 +4,8 @@ import './GoogleSignIn.css';
 function GoogleSignIn({ onSuccess, onError, text = 'Sign in with Google' }) {
   const buttonRef = useRef(null);
   const isInitialized = useRef(false);
+  const retryCount = useRef(0);
+  const maxRetries = 10; // Maximum 2 seconds of retries (10 * 200ms)
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -79,11 +81,24 @@ function GoogleSignIn({ onSuccess, onError, text = 'Sign in with Google' }) {
     }
 
     if (!buttonRef.current) {
-      console.warn('Google Sign-In: Button ref not ready, waiting...');
+      retryCount.current += 1;
+      if (retryCount.current > maxRetries) {
+        console.error('Google Sign-In: Button ref never became ready after', maxRetries, 'retries');
+        setIsLoading(false);
+        setError('Failed to initialize Google Sign In button. Please refresh the page.');
+        if (onError) {
+          onError('Failed to initialize Google Sign In button. Please refresh the page.');
+        }
+        return;
+      }
+      console.warn('Google Sign-In: Button ref not ready, waiting... (attempt', retryCount.current, '/', maxRetries, ')');
       // Wait a bit for the ref to be ready
       setTimeout(() => initializeGoogleSignIn(clientId), 200);
       return;
     }
+    
+    // Reset retry count when ref is ready
+    retryCount.current = 0;
 
     if (isInitialized.current) {
       console.log('Google Sign-In: Already initialized');
@@ -169,7 +184,7 @@ function GoogleSignIn({ onSuccess, onError, text = 'Sign in with Google' }) {
     }
   };
 
-  // Show loading or error state
+  // Show error state
   if (error) {
     return (
       <div className="google-signin-error">
@@ -185,16 +200,19 @@ function GoogleSignIn({ onSuccess, onError, text = 'Sign in with Google' }) {
     );
   }
 
-  if (isLoading) {
-    return (
-      <div className="google-signin-loading">
-        <div className="loading-spinner"></div>
-        <p>Loading Google Sign In...</p>
-      </div>
-    );
-  }
-
-  return <div ref={buttonRef} className="google-signin-container"></div>;
+  // Always render the container div so the ref is available
+  // Show loading overlay if still loading
+  return (
+    <div className="google-signin-wrapper">
+      {isLoading && (
+        <div className="google-signin-loading">
+          <div className="loading-spinner"></div>
+          <p>Loading Google Sign In...</p>
+        </div>
+      )}
+      <div ref={buttonRef} className="google-signin-container" style={{ opacity: isLoading ? 0 : 1 }}></div>
+    </div>
+  );
 }
 
 export default GoogleSignIn;
