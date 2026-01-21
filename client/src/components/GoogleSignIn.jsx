@@ -10,7 +10,15 @@ function GoogleSignIn({ onSuccess, onError, text = 'Sign in with Google' }) {
   useEffect(() => {
     const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
     
-    if (!clientId || clientId === 'YOUR_GOOGLE_CLIENT_ID') {
+    console.log('Google Sign-In: Checking configuration...', {
+      hasClientId: !!clientId,
+      clientIdPrefix: clientId ? clientId.substring(0, 20) + '...' : 'none',
+      hasGoogleScript: !!window.google,
+      hasAccountsId: !!window.google?.accounts?.id
+    });
+    
+    if (!clientId || clientId === 'YOUR_GOOGLE_CLIENT_ID' || clientId.includes('YOUR_CLIENT_ID')) {
+      console.error('Google Sign-In: Client ID not configured');
       setError('Google Client ID not configured');
       setIsLoading(false);
       if (onError) {
@@ -21,40 +29,69 @@ function GoogleSignIn({ onSuccess, onError, text = 'Sign in with Google' }) {
 
     // Check if Google script is already loaded
     if (window.google?.accounts?.id) {
+      console.log('Google Sign-In: Script already loaded, initializing...');
       initializeGoogleSignIn(clientId);
       return;
     }
 
+    console.log('Google Sign-In: Waiting for Google script to load...');
+    let checkCount = 0;
+    const maxChecks = 100; // 10 seconds total (100 * 100ms)
+
     // Wait for Google script to load
     const checkGoogle = setInterval(() => {
+      checkCount++;
       if (window.google?.accounts?.id) {
+        console.log('Google Sign-In: Script loaded, initializing...');
         clearInterval(checkGoogle);
         initializeGoogleSignIn(clientId);
+      } else if (checkCount >= maxChecks) {
+        console.error('Google Sign-In: Timeout waiting for Google script');
+        clearInterval(checkGoogle);
+        setIsLoading(false);
+        setError('Google Sign In failed to load. The Google script may be blocked or not loading. Please check your browser console and network tab.');
+        if (onError) {
+          onError('Google Sign In failed to load. Please refresh the page or check your browser settings.');
+        }
       }
     }, 100);
 
-    // Timeout after 10 seconds
-    const timeout = setTimeout(() => {
-      clearInterval(checkGoogle);
-      setIsLoading(false);
-      setError('Google Sign In failed to load. Please refresh the page.');
-      if (onError) {
-        onError('Google Sign In failed to load. Please refresh the page.');
-      }
-    }, 10000);
-
     return () => {
       clearInterval(checkGoogle);
-      clearTimeout(timeout);
     };
   }, [onError]);
 
   const initializeGoogleSignIn = (clientId) => {
-    if (!window.google?.accounts?.id || !buttonRef.current || isInitialized.current) {
+    console.log('Google Sign-In: Initializing...', {
+      hasGoogle: !!window.google?.accounts?.id,
+      hasButtonRef: !!buttonRef.current,
+      isInitialized: isInitialized.current
+    });
+
+    if (!window.google?.accounts?.id) {
+      console.error('Google Sign-In: window.google.accounts.id not available');
+      setIsLoading(false);
+      setError('Google Sign In script not loaded. Please refresh the page.');
+      if (onError) {
+        onError('Google Sign In script not loaded. Please refresh the page.');
+      }
+      return;
+    }
+
+    if (!buttonRef.current) {
+      console.warn('Google Sign-In: Button ref not ready, waiting...');
+      // Wait a bit for the ref to be ready
+      setTimeout(() => initializeGoogleSignIn(clientId), 200);
+      return;
+    }
+
+    if (isInitialized.current) {
+      console.log('Google Sign-In: Already initialized');
       return;
     }
 
     try {
+      console.log('Google Sign-In: Calling initialize...');
       window.google.accounts.id.initialize({
         client_id: clientId,
         callback: handleCredentialResponse,
@@ -62,28 +99,39 @@ function GoogleSignIn({ onSuccess, onError, text = 'Sign in with Google' }) {
         cancel_on_tap_outside: true,
       });
 
+      console.log('Google Sign-In: Rendering button...');
       // Wait a bit for the container to be ready
       setTimeout(() => {
         if (buttonRef.current && !isInitialized.current) {
-          window.google.accounts.id.renderButton(
-            buttonRef.current,
-            {
-              theme: 'outline',
-              size: 'large',
-              text: 'signin_with',
-              width: 300,
+          try {
+            window.google.accounts.id.renderButton(
+              buttonRef.current,
+              {
+                theme: 'outline',
+                size: 'large',
+                text: 'signin_with',
+                width: 300,
+              }
+            );
+            isInitialized.current = true;
+            setIsLoading(false);
+            console.log('Google Sign-In: Button rendered successfully');
+          } catch (renderError) {
+            console.error('Google Sign-In: Error rendering button:', renderError);
+            setIsLoading(false);
+            setError('Failed to render Google Sign In button. Please try again.');
+            if (onError) {
+              onError('Failed to render Google Sign In button. Please try again.');
             }
-          );
-          isInitialized.current = true;
-          setIsLoading(false);
+          }
         }
       }, 100);
     } catch (error) {
-      console.error('Error initializing Google Sign In:', error);
+      console.error('Google Sign-In: Error initializing:', error);
       setIsLoading(false);
-      setError('Failed to initialize Google Sign In');
+      setError(`Failed to initialize Google Sign In: ${error.message}`);
       if (onError) {
-        onError('Failed to initialize Google Sign In. Please try again.');
+        onError(`Failed to initialize Google Sign In: ${error.message}`);
       }
     }
   };
