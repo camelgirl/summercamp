@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
-import GoogleSignIn from '../components/GoogleSignIn';
 import { useAuth } from '../context/AuthContext';
 import './Auth.css';
 
@@ -12,8 +11,7 @@ function Login() {
   });
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showEmailForm, setShowEmailForm] = useState(false);
-  const { login, loginWithGoogle } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -45,19 +43,6 @@ function Login() {
     }
   };
 
-  const handleGoogleSuccess = async (userData) => {
-    try {
-      await loginWithGoogle(userData);
-      navigate('/');
-    } catch (err) {
-      setError(err.message || 'Failed to sign in with Google. Please try again.');
-    }
-  };
-
-  const handleGoogleError = (errorMessage) => {
-    setError(errorMessage);
-  };
-
   return (
     <>
       <Header title="Sign In" subtitle="Welcome back!" />
@@ -68,21 +53,8 @@ function Login() {
 
           {error && <div className="auth-error">{error}</div>}
 
-          {/* Google Sign In - Primary Method */}
-          <div className="google-signin-section">
-            <GoogleSignIn
-              onSuccess={handleGoogleSuccess}
-              onError={handleGoogleError}
-              text="Sign in with Google"
-            />
-            <div className="auth-divider">
-              <span>or</span>
-            </div>
-          </div>
-
-          {/* Email/Password - Secondary Method */}
-          {showEmailForm ? (
-            <form onSubmit={handleSubmit} className="auth-form">
+          {/* Email/Password Form */}
+          <form onSubmit={handleSubmit} className="auth-form">
             <div className="form-group">
               <label htmlFor="email">Email</label>
               <input
@@ -111,23 +83,14 @@ function Login() {
               />
             </div>
 
-              <button
-                type="submit"
-                className="auth-submit-btn"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Signing In...' : 'Sign In'}
-              </button>
-            </form>
-          ) : (
             <button
-              type="button"
-              className="auth-alternative-btn"
-              onClick={() => setShowEmailForm(true)}
+              type="submit"
+              className="auth-submit-btn"
+              disabled={isSubmitting}
             >
-              Sign in with Email
+              {isSubmitting ? 'Signing In...' : 'Sign In'}
             </button>
-          )}
+          </form>
 
           <div className="auth-footer">
             <p>
